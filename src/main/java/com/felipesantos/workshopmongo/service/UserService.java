@@ -1,5 +1,6 @@
 package com.felipesantos.workshopmongo.service;
 
+import com.felipesantos.workshopmongo.domain.User;
 import com.felipesantos.workshopmongo.dto.UserDTO;
 import com.felipesantos.workshopmongo.repository.UserRepository;
 import com.felipesantos.workshopmongo.service.exception.EntityNotFoundException;
@@ -27,5 +28,9 @@ public class UserService {
         return userRepository.findById(id)
                 .map(UserDTO::new)
                 .orElseThrow(() -> new EntityNotFoundException("User not found!"));
+    }
+
+    public UserDTO save(UserDTO userDTO) {
+        return new UserDTO(userRepository.insert(User.of(userDTO)));
     }
 }
