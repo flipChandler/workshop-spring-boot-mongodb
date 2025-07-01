@@ -2,6 +2,7 @@ package com.felipesantos.workshopmongo.service;
 
 import com.felipesantos.workshopmongo.dto.UserDTO;
 import com.felipesantos.workshopmongo.repository.UserRepository;
+import com.felipesantos.workshopmongo.service.exception.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,5 +21,11 @@ public class UserService {
         return userRepository.findAll()
                 .stream().map(UserDTO::new)
                 .collect(Collectors.toList());
+    }
+
+    public UserDTO findById(String id) {
+        return userRepository.findById(id)
+                .map(UserDTO::new)
+                .orElseThrow(() -> new EntityNotFoundException("User not found!"));
     }
 }
