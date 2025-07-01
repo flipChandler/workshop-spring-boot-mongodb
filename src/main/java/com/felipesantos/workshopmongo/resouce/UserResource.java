@@ -1,6 +1,6 @@
 package com.felipesantos.workshopmongo.resouce;
 
-import com.felipesantos.workshopmongo.domain.User;
+import com.felipesantos.workshopmongo.dto.UserDTO;
 import com.felipesantos.workshopmongo.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class UserResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserDTO>> findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
 }
