@@ -33,4 +33,9 @@ public class UserService {
     public UserDTO save(UserDTO userDTO) {
         return new UserDTO(userRepository.insert(User.of(userDTO)));
     }
+
+    public void deleteById(String id) {
+        this.findById(id);
+        userRepository.deleteById(id);
+    }
 }
