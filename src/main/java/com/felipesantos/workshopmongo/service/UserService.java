@@ -34,6 +34,13 @@ public class UserService {
         return new UserDTO(userRepository.insert(User.of(userDTO)));
     }
 
+    public UserDTO update(String id, UserDTO userDTO) {
+        userDTO.setId(id);
+        this.findById(id);
+        User updatedUser = User.of(userDTO);
+        return new UserDTO(userRepository.save(updatedUser));
+    }
+
     public void deleteById(String id) {
         this.findById(id);
         userRepository.deleteById(id);

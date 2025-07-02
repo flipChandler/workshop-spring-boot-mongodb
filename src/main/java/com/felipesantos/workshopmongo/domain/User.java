@@ -30,7 +30,7 @@ public class User implements Serializable {
     }
 
     public static User of(UserDTO userDTO) {
-        return new User(userDTO.getName(), userDTO.getEmail());
+        return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     }
 
     public String getId() {
